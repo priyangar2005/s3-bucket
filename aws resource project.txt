@@ -1,0 +1,30 @@
+#!/bin/bash
+                                                                                                                                                                        ###############                                                                                                                                                         
+#Author :priyanga
+#Date:30/12/2024
+#Version:v2
+
+#This script generate the report of aws resource
+
+#############
+
+###############
+#Aws Resource
+set -x
+
+#aws Ec2
+#aaws S3
+#aws IAM
+#aws LAMBDA
+
+############
+LOG_FILE="Tracker.log"
+
+echo "Elastic computer cloud"
+aws ec2 describe-instances | jq '.Reservations[].Instances[].InstanceId' >> Tracker.log
+echo "Simple Storage Service"
+aws s3 ls >> Tracker.log
+echo "Identify access management"
+aws iam  list-users >> Tracker.log
+echo "Lambda"
+aws lambda list-functions >> Tracker.log
